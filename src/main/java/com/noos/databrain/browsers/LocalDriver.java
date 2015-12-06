@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.social.multidriver;
+
+package com.noos.databrain.browsers;
 
 import org.openqa.selenium.WebDriver;
 
 
-public class LocalDriverManager {
+public class LocalDriver {
 
     private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
@@ -19,5 +15,5 @@ public class LocalDriverManager {
     static void setWebDriver(WebDriver driver) {
         webDriver.set(driver);
     }
-}
 
+}

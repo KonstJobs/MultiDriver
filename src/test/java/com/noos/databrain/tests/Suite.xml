@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="tt" parallel="classes" thread-count="6">
+<suite name="tt" parallel="classes" thread-count="2">
 
     <test name="t1">
         <classes>
-            <class name="com.social.multidriver.tests.T1"/>
-            <class name="com.social.multidriver.tests.T2"/>
+            <class name="com.noos.databrain.tests.T1"/>
+            <class name="com.noos.databrain.tests.T2"/><!--
             <class name="com.social.multidriver.tests.T3"/>
             <class name="com.social.multidriver.tests.T4"/>
             <class name="com.social.multidriver.tests.T5"/>
-            <class name="com.social.multidriver.tests.T6"/>
+            <class name="com.social.multidriver.tests.T6"/>-->
         </classes>
     </test>
     

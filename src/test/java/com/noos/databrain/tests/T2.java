@@ -1,9 +1,7 @@
-package com.social.multidriver.tests;
+package com.noos.databrain.tests;
 
-import com.social.multidriver.DriverMan;
-import com.social.multidriver.Times;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.noos.databrain.browsers.DriverManager;
+import com.noos.databrain.multidriver.Times;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -14,29 +12,27 @@ import org.testng.annotations.Test;
 public class T2 extends AbstractTestNGSpringContextTests {
 
     @Autowired
-    DriverMan man;
+    DriverManager man;
 
     @Test
-    public void tsdfest() throws Exception {
-        man.openDriver();
-        sleep(300000);
-        for (int i = 0; i < 44; i++) {
-            System.out.println("test 2");
+    public void tsdfest() {
+        man.initDriver();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("test 1");
             sleep(Times.ms);
         }
-        throw new Exception("OLOLOLO");
     }
 
     @AfterClass
-    public void closeDriver() {
-        man.closeDriver();
+    public void quitDriver() {
+        man.quitDriver();
     }
 
     private void sleep(long ms) {
         try {
             Thread.sleep(ms);
         } catch (InterruptedException ex) {
-            Logger.getLogger(T2.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ololo");
         }
     }
 }
