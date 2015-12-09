@@ -1,11 +1,13 @@
 package com.noos.databrain.tests;
 
 import com.noos.databrain.browsers.DriverManager;
-import com.noos.databrain.multidriver.Times;
+import com.noos.databrain.pages.BrowserThread;
+import com.noos.databrain.steps.Steps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 @ContextConfiguration(locations = {"classpath:spring-config.xml"})
@@ -14,25 +16,34 @@ public class T1 extends AbstractTestNGSpringContextTests {
     @Autowired
     DriverManager man;
 
-    @Test
-    public void tsdfest() {
-        man.initDriver();
-        for (int i = 0; i < 10; i++) {
-            System.out.println("test 1");
-            sleep(Times.ms);
-        }
+    @Autowired
+    Steps step;
+
+    @Test(invocationCount = 1)
+    public void tsdfest() throws InterruptedException {
+
+        System.out.println("START MAIN");
+
+        BrowserThread b = new BrowserThread("firefox");
+        BrowserThread b1 = new BrowserThread("chrome");
+        
+        b.getThread().join();
+        b1.getThread().join();
+
+        System.out.println("FINISH MAIN");
+
     }
 
     @AfterClass
     public void quitDriver() {
+        step.openPage("https://www.google.com.ua/");
+        System.out.println("get in main");
         man.quitDriver();
     }
 
-    private void sleep(long ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException ex) {
-            System.out.println("ololo");
-        }
+    @BeforeClass
+    public void initDriver() {
+        man.initDriver();
     }
+
 }

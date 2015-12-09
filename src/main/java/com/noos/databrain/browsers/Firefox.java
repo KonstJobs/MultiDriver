@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.noos.databrain.browsers;
 
 import java.io.File;
@@ -12,9 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.springframework.stereotype.Component;
 
-@Component
 public class Firefox implements Browser {
 
  
@@ -29,7 +23,7 @@ public class Firefox implements Browser {
         switch (env) {
 
             case "local":
-                firefoxfile = new File("Z:\\soft\\Firefox\\at");
+                firefoxfile = new File("E:\\ffprofile");
                 firefoxProfile = new FirefoxProfile(firefoxfile);
                 caps.setCapability(FirefoxDriver.PROFILE, firefoxProfile);
                 caps.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);

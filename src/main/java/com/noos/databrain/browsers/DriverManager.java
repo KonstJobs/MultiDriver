@@ -13,12 +13,6 @@ public class DriverManager {
     @Autowired
     AbstractPage abstractPage;
 
-    @Autowired
-    Firefox firefox;
-
-    @Autowired
-    Chrome chrome;
-
     Browser browser;
 
     private DesiredCapabilities capabilities;
@@ -30,13 +24,13 @@ public class DriverManager {
 
         switch (bro) {
             case "firefox":
-                browser = firefox;
+                browser = new Firefox();
                 break;
             case "chrome":
-                browser = chrome;
+                browser = new Chrome();
                 break;
             default:
-                browser = firefox;
+                browser = new Firefox();
         }
 
         driver = browser.getInstance();
@@ -62,12 +56,5 @@ public class DriverManager {
         }
     }
 
-    public void deleteCookies() {
-        LocalDriver.getDriver().manage().deleteAllCookies();
-    }
-
-    public void refresh() {
-        LocalDriver.getDriver().navigate().refresh();
-    }
-
+   
 }

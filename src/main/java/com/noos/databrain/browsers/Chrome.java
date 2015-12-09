@@ -4,11 +4,9 @@ import java.io.File;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public class Chrome implements Browser {
 
    
@@ -16,7 +14,7 @@ public class Chrome implements Browser {
 
     @Override
     public WebDriver getInstance() {
-        String env = System.getProperty("runOn");
+        String env = System.getProperty("env");
         caps = setCaps(env);
 
         return new ChromeDriver(caps);
@@ -30,14 +28,12 @@ public class Chrome implements Browser {
         switch (env) {
 
             case "local":
-                File chromefile = new File("");
+                File chromefile = new File("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
                 ChromeOptions opt = new ChromeOptions();
                 opt.setBinary(chromefile);
 
                 caps.setCapability(ChromeOptions.CAPABILITY, opt);
-                caps.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-                System.setProperty("webdriver.chrome.driver", "Z:\\soft\\AutotestRepo\\BigTesty\\src\\main\\resources\\drivers\\chromedriver.exe");
-
+                System.setProperty("webdriver.chrome.driver", "./src/main/resources/drivers/chromedriver.exe");
                 break;
 
             case "vm":

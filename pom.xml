@@ -65,7 +65,7 @@
                         </property>
                         <property>
                             <name>browser</name>
-                            <value>firefox</value>
+                            <value>chrome</value>
                         </property>
                     </systemProperties>
                     <suiteXmlFiles>
