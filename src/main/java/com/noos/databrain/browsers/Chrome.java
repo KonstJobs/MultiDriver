@@ -5,35 +5,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-
+@Component
+@Scope("prototype")
 public class Chrome implements Browser {
 
-   
+    private final String local_chrome_dir = 
     private DesiredCapabilities caps;
 
     @Override
-    public WebDriver getInstance() {
-        String env = System.getProperty("env");
+    public WebDriver getDriver() {
+        String env = System.getProperty("runOn");
         caps = setCaps(env);
 
         return new ChromeDriver(caps);
     }
 
     @Override
-    public DesiredCapabilities setCaps(String env) {
+    public DesiredCapabilities setCaps(String runOn) {
 
         caps = new DesiredCapabilities();
 
-        switch (env) {
+        switch (runOn) {
 
             case "local":
-                File chromefile = new File("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
+                File chromefile = new File(local_chrome_dir);
                 ChromeOptions opt = new ChromeOptions();
                 opt.setBinary(chromefile);
 
                 caps.setCapability(ChromeOptions.CAPABILITY, opt);
-                System.setProperty("webdriver.chrome.driver", "./src/main/resources/drivers/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", ".\src\\main\\resources\\drivers\\chromedriver.exe");
+
                 break;
 
             case "vm":

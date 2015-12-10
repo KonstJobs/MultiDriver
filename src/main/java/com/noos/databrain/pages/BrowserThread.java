@@ -1,39 +1,32 @@
 package com.noos.databrain.pages;
 
-import com.noos.databrain.browsers.Chrome;
-import com.noos.databrain.browsers.Firefox;
+import com.noos.databrain.browsers.DriverManager;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("prototype")
 public class BrowserThread implements Runnable {
 
-    Thread t;
+    @Autowired
+    DriverManager driverman;
+
     WebDriver driver;
-    String name;
+    String browser;
 
-    public BrowserThread(String name) {
-        t = new Thread(this, name);
-        this.name = name;
-        System.out.println("BRO STARTED");
-        t.start();
-    }
-
-    public Thread getThread() {
-        return t;
+    public void setName(String browser) {
+        this.browser = browser;
     }
 
     @Override
     public void run() {
 
-        switch (name) {
-            case "chrome":
-                driver = new Chrome().getInstance();
-                break;
-            case "firefox":
-                driver = new Firefox().getInstance();
-                break;
-        }
-
+        System.out.println("BRO START");
+        
+        driver = driverman.initDriver(browser);
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 
         driver.get("https://www.google.com.ua/");

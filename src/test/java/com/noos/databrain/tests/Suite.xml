@@ -4,8 +4,8 @@
 
     <test name="t1">
         <classes>
-            <class name="com.noos.databrain.tests.T1"/>
-            <class name="com.noos.databrain.tests.T2"/><!--
+            <class name="com.noos.databrain.tests.T1Control"/>
+            <class name="com.noos.databrain.tests.T1Control2"/><!--
             <class name="com.social.multidriver.tests.T3"/>
             <class name="com.social.multidriver.tests.T4"/>
             <class name="com.social.multidriver.tests.T5"/>

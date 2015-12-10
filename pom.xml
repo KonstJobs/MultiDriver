@@ -60,12 +60,12 @@
                 <configuration>
                     <systemProperties>
                         <property>
-                            <name>env</name>
+                            <name>runOn</name>
                             <value>local</value>
                         </property>
                         <property>
                             <name>browser</name>
-                            <value>chrome</value>
+                            <value>firefox</value>
                         </property>
                     </systemProperties>
                     <suiteXmlFiles>
@@ -77,5 +77,5 @@
             
         </plugins>
     </build>
-    
+    <name>MultiDriver</name>
 </project>

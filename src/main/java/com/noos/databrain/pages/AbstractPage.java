@@ -1,9 +1,7 @@
-
 package com.noos.databrain.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.stereotype.Component;
-
 
 @Component
 public class AbstractPage {

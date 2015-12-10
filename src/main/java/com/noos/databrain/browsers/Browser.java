@@ -5,6 +5,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 
 public interface Browser {
-    public DesiredCapabilities setCaps(String env);
-    public WebDriver getInstance();
+    public DesiredCapabilities setCaps(String runOn);
+    public WebDriver getDriver();
 }
