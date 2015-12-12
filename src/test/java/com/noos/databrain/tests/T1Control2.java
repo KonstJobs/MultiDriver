@@ -27,7 +27,7 @@ public class T1Control2 extends AbstractTestNGSpringContextTests {
         
         ThreadPoolTaskExecutor taskExecutor = (ThreadPoolTaskExecutor) applicationContext.getBean("taskExecutor2");
 
-        String[] bros = {"firefox", "firefox", "firefox", "firefox", "chrome"};
+        String[] bros = {"chrome"};
         broExecutor(bros, taskExecutor);
         taskExecutor.shutdown();
         

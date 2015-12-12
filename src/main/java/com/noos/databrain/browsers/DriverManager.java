@@ -10,9 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class DriverManager {
 
-    @Autowired
-    AbstractPage abstractPage;
-
+//    @Autowired
+//    AbstractPage abstractPage;
     @Autowired
     private ApplicationContext appContext;
 
@@ -23,7 +22,9 @@ public class DriverManager {
 
         WebDriver driver = initBrowser(bro);
 
-        abstractPage.initDriver(driver);
+        AbstractPage ab =  (AbstractPage) appContext.getBean("abstractPage");
+        ab.initDriver();
+        //new AbstractPage().initDriver();
         return driver;
 
     }

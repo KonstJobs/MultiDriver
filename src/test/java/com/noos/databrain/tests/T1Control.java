@@ -4,7 +4,6 @@ import com.noos.databrain.browsers.DriverManager;
 import com.noos.databrain.pages.BrowserThread;
 import com.noos.databrain.steps.Steps;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -21,17 +20,14 @@ public class T1Control extends AbstractTestNGSpringContextTests {
     @Autowired
     Steps step;
 
-    @Value("${local_ff_dir}")
-    private String local_ff_dir;
-
-    @Test(invocationCount = 2)
+    @Test(invocationCount = 1)
     public void test1() throws InterruptedException {
 
         System.out.println("START MAIN 1");
 
         ThreadPoolTaskExecutor taskExecutor = (ThreadPoolTaskExecutor) applicationContext.getBean("taskExecutor");
 
-        String[] bros = {"firefox", "firefox", "chrome"};
+        String[] bros = {"chrome"};
         broExecutor(bros, taskExecutor);
         taskExecutor.shutdown();
 

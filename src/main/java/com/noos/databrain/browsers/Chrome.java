@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class Chrome implements Browser {
 
-    private final String local_chrome_dir = 
+    private final String local_chrome_dir = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
     private DesiredCapabilities caps;
 
     @Override
@@ -36,7 +36,7 @@ public class Chrome implements Browser {
                 opt.setBinary(chromefile);
 
                 caps.setCapability(ChromeOptions.CAPABILITY, opt);
-                System.setProperty("webdriver.chrome.driver", ".\src\\main\\resources\\drivers\\chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", ".\\src\\main\\resources\\drivers\\chromedriver.exe");
 
                 break;
 
